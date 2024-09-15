@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = {"lua_ls", "rust_analyzer", "pyright", "ltex", "clangd"}
+                ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "ltex", "clangd", "jdtls" }
             })
         end
     },
@@ -37,13 +37,14 @@ return {
                     }
                 }
             })
+            lspconfig.jdtls.setup({});
 
             -- SETTING UP KEYBINDINGS
             -- shift + K now shows more info of the thing you are hovering
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-            vim.keymap.set({'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
-            vim.keymap.set({'n', 'v' }, '<leader>fc', vim.lsp.buf.format, {})
+            vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
+            vim.keymap.set({ 'n', 'v' }, '<leader>fc', vim.lsp.buf.format, {})
         end
     }
 }
