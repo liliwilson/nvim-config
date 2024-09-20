@@ -173,6 +173,8 @@ return {
             dashboard.button("spc f g", "  search", "<leader>fg"),
         }
 
+        dashboard.section.buttons.opts.hl = "SpecialComment"
+
         dashboard.section.mru = {
             type = "group",
             val = {

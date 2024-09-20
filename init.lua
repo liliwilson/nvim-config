@@ -12,5 +12,7 @@ vim.g.mapleader = " "
 vim.api.nvim_set_keymap('n', '<leader>pv', '"*p', { noremap = true, silent = true })
 -- Rebind "*y to <leader>cv (copy to system clipboard)
 vim.api.nvim_set_keymap('n', '<leader>cv', '"*y', { noremap = true, silent = true })
+-- Invoke alpha with <leader>a
+vim.api.nvim_set_keymap('n', '<leader>a', '<cmd>Alpha<cr>', { noremap = true, silent = true })
 
 require("config.lazy")
