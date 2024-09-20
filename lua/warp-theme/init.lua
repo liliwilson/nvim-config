@@ -2,34 +2,47 @@ local colorscheme = {}
 
 -- ADD SOMETHING THAT, GIVEN A WARP FILENAME, LOADS IN THE COLORS FROM THE FILE
 -- todo
---     give a warp filename and read these values?
---     continue with the thing-specific colors...
---          fix the weird highlighting and stuff... for lualine and for neotree
+--      make it more configurable so i can share this online lol
+--          make it so that if there is no warp theme findable, we search thru the warp themes repo
+--          have you put in your warp theme directory in the config?
+--
+--
+--      add the other palenight syntax stuff
+
 
 local name = "HackMIT 2024"
 
+local utils = require("warp-theme.utils")
+local yaml_path = "/Users/liliwilson/.warp/themes/hack_mit_2024.yaml"
+local yaml_table = utils.load_yaml(yaml_path)
+
+if yaml_table then
+    print("yaml_table acce", yaml_table.accent)
+end
+
 local base_colors = {
-    bg = "#0a1228",
-    accent = "#e754ac",
-    fg = "#fffcf0",
-    black = "#444444",
-    red = "#ff5555",
-    green = "#c5f467",
-    yellow = "#fdde7b",
-    blue = "#bd93f9",
-    magenta = "#ff79c6",
-    cyan = "#5cecc6",
-    white = "#c5d1eb",
-    bright_black = "#8e8e8e",
-    bright_red = "#ff7777",
-    bright_green = "#c1f080",
-    bright_yellow = "#ffda8a",
-    bright_blue = "#caa9fa",
-    bright_magenta = "#ff79c6",
-    bright_cyan = "#7be9dd",
-    bright_white = "#dfe5ee",
+    bg = yaml_table and yaml_table.background or nil,
+    accent = yaml_table and yaml_table.accent or nil,
+    fg = yaml_table and yaml_table.foreground or nil,
+    black = yaml_table and yaml_table.normal_black or nil,
+    red = yaml_table and yaml_table.normal_red or nil,
+    green = yaml_table and yaml_table.normal_green or nil,
+    yellow = yaml_table and yaml_table.normal_yellow or nil,
+    blue = yaml_table and yaml_table.normal_blue or nil,
+    magenta = yaml_table and yaml_table.normal_magenta or nil,
+    cyan = yaml_table and yaml_table.normal_cyan or nil,
+    white = yaml_table and yaml_table.normal_white or nil,
+    bright_black = yaml_table and yaml_table.bright_black or nil,
+    bright_red = yaml_table and yaml_table.bright_red or nil,
+    bright_green = yaml_table and yaml_table.bright_green or nil,
+    bright_yellow = yaml_table and yaml_table.bright_yellow or nil,
+    bright_blue = yaml_table and yaml_table.bright_blue or nil,
+    bright_magenta = yaml_table and yaml_table.bright_magenta or nil,
+    bright_cyan = yaml_table and yaml_table.bright_cyan or nil,
+    bright_white = yaml_table and yaml_table.bright_white or nil
 }
 
+-- basing colors off of palenight
 local colors = {
     red = base_colors.red,
     light_red = base_colors.bright_red,
@@ -83,7 +96,7 @@ local theme = {
     SpecialChar = {},
     Tag = {},
     Delimiter = {},
-    SpecialComment = { fg = colors.comment_grey },
+    SpecialComment = { fg = base_colors.accent },
     Debug = {},
     Underlined = { gui = "underline", cterm = "underline" },
     Ignore = {},
