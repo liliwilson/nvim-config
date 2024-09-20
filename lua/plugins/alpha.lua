@@ -165,7 +165,7 @@ return {
             [[/__.-'|_|--|_|]],
         }
 
-        dashboard.section.header.opts.hl = "Comment"
+        dashboard.section.header.opts.hl = "SpecialComment"
 
         dashboard.section.buttons.val = {
             dashboard.button("e", "  new file", "<cmd>ene <CR>"),
@@ -173,7 +173,9 @@ return {
             dashboard.button("spc f g", "  search", "<leader>fg"),
         }
 
-        dashboard.section.buttons.opts.hl = "SpecialComment"
+        for _, v in ipairs(dashboard.section.buttons.val) do
+            v.opts.hl_shortcut = "Comment"
+        end
 
         dashboard.section.mru = {
             type = "group",
@@ -198,7 +200,6 @@ return {
 
         dashboard.section.footer.val = "as human beings, we have a natural compulsion to fill empty spaces - will shortz"
 
-
         dashboard.section.footer.opts.hl = "Statement"
 
         dashboard.config = {
@@ -210,6 +211,7 @@ return {
                 dashboard.section.mru,
                 { type = "padding", val = 2 },
                 dashboard.section.footer,
+                { type = "padding", val = 4 },
             },
             opts = {
                 margin = 5,
