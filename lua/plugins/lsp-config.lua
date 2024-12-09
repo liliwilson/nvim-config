@@ -9,7 +9,7 @@ return {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "jdtls"}
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "jdtls", "pyright", "html"}
             })
         end
     },
@@ -29,7 +29,9 @@ return {
                     }
                 }
             })
+            lspconfig.pyright.setup({})
             lspconfig.jdtls.setup({})
+            lspconfig.html.setup({})
 
             -- SETTING UP KEYBINDINGS
             -- shift + K now shows more info of the thing you are hovering

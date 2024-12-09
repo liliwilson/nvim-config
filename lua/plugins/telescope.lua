@@ -6,11 +6,12 @@ return {
         config = function()
             -- fzf settings!
             local builtin = require('telescope.builtin')
+
             -- set ctrl+P to find files
             vim.keymap.set('n', '<C-p>', builtin.find_files, {})
             -- set leader + fg to do live grep, right now this is space+fg
             vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-            -- set leader + fg to do live grep, right now this is space+fg
+            -- set leader + fs to grep the currently selected thing
             vim.keymap.set('n', '<leader>fs', ":Telescope grep_string<CR>", { noremap = true, silent = true })
             -- oldfiles
             vim.keymap.set('n', "<Leader>fr", ":Telescope oldfiles<CR>", { noremap = true, silent = true })

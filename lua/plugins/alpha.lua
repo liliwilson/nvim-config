@@ -192,7 +192,7 @@ return {
                 {
                     type = "group",
                     val = function()
-                        return { mru(0) }
+                        return { mru(0, vim.fn.getcwd()) }
                     end,
                 },
             },
