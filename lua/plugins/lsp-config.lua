@@ -2,14 +2,14 @@ return {
     {
         "williamboman/mason.nvim",
         config = function()
-            require("mason").setup()
+            require("mason").setup({})
         end
     },
     {
         "williamboman/mason-lspconfig.nvim",
         config = function()
             require("mason-lspconfig").setup({
-                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pyright"}
+                ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "pyright" }
             })
         end
     },
@@ -37,6 +37,11 @@ return {
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
             vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, {})
             vim.keymap.set({ 'n', 'v' }, '<leader>fc', vim.lsp.buf.format, {})
+
+
+            vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+                border = "rounded", -- You can also use "single", "double", "shadow", or custom characters
+            })
         end
     }
 }
