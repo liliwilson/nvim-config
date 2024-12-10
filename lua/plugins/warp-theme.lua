@@ -1,5 +1,7 @@
 return {
     'liliwilson/warp-theme-nvim',
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000,
     config = function()
         require('warp-theme-nvim').setup({
 --            theme_link = "https://raw.githubusercontent.com/warpdotdev/themes/refs/heads/main/warp_bundled/cyber_wave.yaml"
