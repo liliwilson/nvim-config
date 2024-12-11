@@ -40,3 +40,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- mappings for buffers
 map("n", "<Tab>", "<cmd>bnext<CR>")
 map("n", "<S-Tab>", "<cmd>bprev<CR>")
+
+-- mappings for split
+-- note: bd closes
+map("n", "<leader>v", "<cmd>vs<CR>")
+map("n", "<leader>h", "<cmd>split<CR>")
